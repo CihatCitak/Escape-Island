@@ -6,6 +6,7 @@ namespace InputSystem
     {
         [SerializeField] private Camera gamePlayCamera;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private ClickableManager clickableManager;
 
         private void Update()
         {
@@ -20,7 +21,7 @@ namespace InputSystem
 
                     if(raycastHit.collider.gameObject.TryGetComponent(out IClickable clickable))
                     {
-
+                        clickableManager.SetLastClicked(clickable);
                     }
                 }
             }
