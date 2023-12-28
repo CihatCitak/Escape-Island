@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6164178983007614580}
   - component: {fileID: 6164178983007614581}
   - component: {fileID: 963194229}
+  - component: {fileID: 6164178982359128841}
   m_Layer: 0
   m_Name: Pre_GamePlayCamera
   m_TagString: MainCamera
@@ -101,3 +102,17 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  clickableManager: {fileID: 6164178982359128841}
+--- !u!114 &6164178982359128841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6164178983007614582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3565f9083a0d22945b3547c371472eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldManager: {fileID: 0}
