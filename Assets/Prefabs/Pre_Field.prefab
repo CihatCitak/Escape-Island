@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce57f19945f22184ebb78bec22c96547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fieldFBXTransform: {fileID: 7705416435188535779}
 --- !u!54 &2236994422239761475
 Rigidbody:
   m_ObjectHideFlags: 0
