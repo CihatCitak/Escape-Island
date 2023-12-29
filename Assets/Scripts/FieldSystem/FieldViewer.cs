@@ -1,5 +1,6 @@
 ﻿using InputSystem;
 using UnityEngine;
+using DG.Tweening;
 
 namespace FieldSystem
 {
@@ -10,6 +11,7 @@ namespace FieldSystem
         public void OnCLick()
         {
             // Yukarı kaldır
+            transform.DOMoveY(1f, 1f).SetEase(Ease.InOutSine).Play();
         }
 
         public void OnClose()
@@ -21,6 +23,7 @@ namespace FieldSystem
         public void ResetClick()
         {
             // Aşağıya indir
+            transform.DOMoveY(0f, 1f).SetEase(Ease.InOutSine).Play();
         }
     }
 }

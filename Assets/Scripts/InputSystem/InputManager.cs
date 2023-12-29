@@ -17,9 +17,10 @@ namespace InputSystem
 
                 if(Physics.Raycast(ray, out RaycastHit raycastHit, layerMask))
                 {
-                    Debug.Log("Click a clickable");
-
-                    if(raycastHit.collider.gameObject.TryGetComponent(out IClickable clickable))
+                    // first rigidbody in object
+                    var rbBody = raycastHit.collider.attachedRigidbody;
+                    
+                    if(rbBody.transform.TryGetComponent(out IClickable clickable))
                     {
                         clickableManager.SetLastClicked(clickable);
                     }
