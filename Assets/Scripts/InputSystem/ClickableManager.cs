@@ -10,10 +10,9 @@ namespace InputSystem
         private IClickable firstCicked = null;
         private IClickable secondClicked = null;
 
-
         public void SetLastClicked(IClickable clickable)
         {
-            // if there is no field that is not clicked before
+            // if there is no clickable that is not clicked before
             if (firstCicked == null)
             {
                 firstCicked = clickable;
@@ -21,9 +20,10 @@ namespace InputSystem
                 return;
             }
 
-            // if same field clicked twice
+            // if same clickable clicked twice
             if (firstCicked == clickable)
             {
+                firstCicked = null;
                 firstCicked.ResetClick();
                 return;
             }
@@ -35,6 +35,9 @@ namespace InputSystem
 
             firstCicked.ResetClick();
             secondClicked.ResetClick();
+
+            firstCicked = null;
+            secondClicked = null;
         }
     }
 }
