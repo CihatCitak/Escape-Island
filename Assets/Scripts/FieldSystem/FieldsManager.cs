@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using InputSystem;
+﻿using InputSystem;
 using System.Collections.Generic;
 
 namespace FieldSystem
 {
-    public class FieldsManager : MonoBehaviour
+    public class FieldsManager
     {
+        public List<FieldHolder> FieldsHolder { get => fieldsHolder; }
         private List<FieldHolder> fieldsHolder = new List<FieldHolder>();
 
         public void TryTransfer(IClickable clickableFirst, IClickable clickableSecond)
@@ -15,8 +15,8 @@ namespace FieldSystem
             FieldViewer secondClickViewer = clickableSecond as FieldViewer;
 
             // Find FieldViewer to FieldController
-            FieldController firstClickFieldController = fieldsHolder.Find(x => x.FieldView == firstClickViewer).FieldController;
-            FieldController secondClickFieldController = fieldsHolder.Find(x => x.FieldView == secondClickViewer).FieldController;
+            FieldController firstClickFieldController = fieldsHolder.Find(x => x.FieldViewer == firstClickViewer).FieldController;
+            FieldController secondClickFieldController = fieldsHolder.Find(x => x.FieldViewer == secondClickViewer).FieldController;
 
             TryTransfer(firstClickFieldController, secondClickFieldController);
         }
@@ -50,7 +50,13 @@ namespace FieldSystem
         public sealed class FieldHolder
         {
             public FieldController FieldController;
-            public FieldViewer FieldView;
+            public FieldViewer FieldViewer;
+
+            public FieldHolder(FieldController fieldController, FieldViewer fieldViewer)
+            {
+                FieldController = fieldController;
+                FieldViewer = fieldViewer;
+            }
         }
     }
 }

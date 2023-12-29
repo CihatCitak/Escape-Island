@@ -7,9 +7,11 @@ namespace LevelDataSystem
     [CreateAssetMenu(menuName = "Level Data/Level", fileName = "Level")]
     public class LevelData : ScriptableObject
     {
-        public int LevelIndex = 0;
+        [Header("Prefabs")]
+        public FieldViewer FieldPrefab;
         public GameObject PawnPrefab;
         public GameObject ClosePawnPrefab;
-        public List<FieldModelScriptable> FieldDatas;
+        [Header("Field Datas")]
+        public List<FieldModelScriptable> FieldModels;
     }
 }

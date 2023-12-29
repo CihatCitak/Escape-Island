@@ -23,7 +23,7 @@ namespace FieldSystem
         public void ResetClick()
         {
             // Aşağıya indir
-            transform.DOMoveY(0f, 1f).SetEase(Ease.InOutSine).Play();
+            transform.DOMoveY(0f, 0.5f).SetEase(Ease.InOutSine).Play();
         }
     }
 }

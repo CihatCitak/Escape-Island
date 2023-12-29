@@ -1,4 +1,6 @@
-﻿namespace FieldSystem
+﻿using UnityEngine;
+
+namespace FieldSystem
 {
     public class FieldController
     {
@@ -7,9 +9,13 @@
 
         private FieldModel fieldModel;
 
-        public FieldController(FieldModel fieldData)
+        public FieldController(FieldModel fm, FieldViewer fv)
         {
-            fieldModel = fieldData.Clone();
+            fieldViewer = fv;
+            fieldModel = fm.Clone();
+
+            fieldViewer.transform.position = fieldModel.PositionInLevel;
+            fieldViewer.transform.eulerAngles = new Vector3(0, fieldModel.YRotationOffset, 0);
         }
 
         // todo: Transfer ile ilgili işlemler burada yapılacak

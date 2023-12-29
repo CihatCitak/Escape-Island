@@ -32,7 +32,7 @@ namespace FieldSystem
     public class FieldColumn
     {
         public List<Vector3> Positions = new List<Vector3>();
-        public ColorType ColorType = ColorType.None;
+        public ColorType ColorType = ColorType.Empty;
         public bool IsOpen = true;
 
         public FieldColumn Clone()
