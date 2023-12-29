@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd546e774eca5a042823b53b060fb3d3, type: 3}
+  m_Name: SO_Level1
+  m_EditorClassIdentifier: 
+  FieldPrefab: {fileID: 574852625, guid: a82e329ae2ef2fa4c946bdf64db778ec, type: 3}
+  PawnPrefab: {fileID: 0}
+  ClosePawnPrefab: {fileID: 0}
+  FieldModels:
+  - {fileID: 11400000, guid: 35e61ea925a61fd43bf6d93178071fa4, type: 2}
+  - {fileID: 11400000, guid: e103085bebafd8c488ee80724226c208, type: 2}
+  - {fileID: 11400000, guid: bfffd79f1597e7b4483919ebe25374dc, type: 2}
+  - {fileID: 11400000, guid: 0ed7c4438b3f2ed4b9bce46d37c67a14, type: 2}
