@@ -4,12 +4,6 @@ using System.Collections.Generic;
 
 namespace FieldSystem
 {
-    [CreateAssetMenu(menuName = "Level Data/Field", fileName = "Field")]
-    public class FieldModelScriptable : ScriptableObject
-    {
-        public FieldModel FieldModel;
-    }
-
     [Serializable]
     public class FieldModel
     {
