@@ -1,5 +1,6 @@
-﻿using ObjectPooling;
+﻿using PawnSystem;
 using UnityEngine;
+using ColorSystem;
 
 namespace FieldSystem
 {
@@ -25,7 +26,7 @@ namespace FieldSystem
 
                 foreach (var position in fieldColumn.Positions)
                 {
-                    PawnSystem.IPawn pawn = PawnSystem.PawnPool.Instance.Dequeue();
+                    IPawn pawn = PawnPool.Instance.Dequeue();
                     pawn
                         .SetTransformParent(fieldViewer.GetPawnPositionParent())
                         .SetColor(fieldColumn.ColorType)

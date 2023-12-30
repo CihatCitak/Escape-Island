@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 146324200958946452}
   - component: {fileID: 146324200958946459}
   m_Layer: 6
-  m_Name: PawnView
+  m_Name: PawnModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 146324200971295507}
+  m_Father: {fileID: 7582884757451706993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &146324200958946452
@@ -112,7 +112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 146324200958946453}
+  - {fileID: 7582884757451706993}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,3 +128,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2c3af325cff2f4b8ea61f6b20e1e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawnViewer: {fileID: 5460754811064352984}
+--- !u!1 &6131145962779182168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7582884757451706993}
+  - component: {fileID: 5460754811064352984}
+  m_Layer: 0
+  m_Name: PawnViewer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7582884757451706993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131145962779182168}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 146324200958946453}
+  m_Father: {fileID: 146324200971295507}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5460754811064352984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6131145962779182168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae1494027f51a44fb47da1b24fe2322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialHolder: {fileID: 11400000, guid: 674a97c04c26e244ea4a0251d807eb4d, type: 2}
+  meshRenderer: {fileID: 146324200958946459}
