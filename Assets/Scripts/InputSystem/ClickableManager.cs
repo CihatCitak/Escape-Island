@@ -8,7 +8,6 @@ namespace InputSystem
         [SerializeField] private FieldsManager fieldManager;
 
         private IClickable firstCicked = null;
-        private IClickable secondClicked = null;
 
         public void SetLastClicked(IClickable clickable)
         {
@@ -31,15 +30,10 @@ namespace InputSystem
                 return;
             }
 
-            secondClicked = clickable;
-            secondClicked.OnCLick();
-            
-            fieldManager?.TryTransfer(firstCicked, secondClicked);
+            fieldManager?.TryTransfer(firstCicked, clickable);
 
             firstCicked.ResetClick();
-            secondClicked.ResetClick();
             firstCicked = null;
-            secondClicked = null;
         }
     }
 }
