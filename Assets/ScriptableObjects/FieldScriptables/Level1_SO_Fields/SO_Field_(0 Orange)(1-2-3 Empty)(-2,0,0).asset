@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: badcc91742573a942beca89cb067edb3, type: 3}
-  m_Name: SO_Field_Empty
+  m_Name: SO_Field_(0 Orange)(1-2-3 Empty)(-2,0,0)
   m_EditorClassIdentifier: 
   FieldModel:
-    PositionInLevel: {x: 0, y: 0, z: 0}
+    PositionInLevel: {x: -2, y: 0, z: 0}
     FieldColumns:
     - Positions:
       - {x: -0.3, y: 0, z: -0.3}
       - {x: -0.1, y: 0, z: -0.3}
       - {x: 0.1, y: 0, z: -0.3}
       - {x: 0.3, y: 0, z: -0.3}
-      ColorType: 0
+      ColorType: 3
       IsOpen: 0
     - Positions:
       - {x: -0.3, y: 0, z: -0.1}

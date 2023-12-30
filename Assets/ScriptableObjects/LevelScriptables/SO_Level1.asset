@@ -16,7 +16,5 @@ MonoBehaviour:
   PawnPrefab: {fileID: 0}
   ClosePawnPrefab: {fileID: 0}
   FieldModels:
-  - {fileID: 11400000, guid: 35e61ea925a61fd43bf6d93178071fa4, type: 2}
-  - {fileID: 11400000, guid: e103085bebafd8c488ee80724226c208, type: 2}
-  - {fileID: 11400000, guid: bfffd79f1597e7b4483919ebe25374dc, type: 2}
-  - {fileID: 11400000, guid: 0ed7c4438b3f2ed4b9bce46d37c67a14, type: 2}
+  - {fileID: 11400000, guid: cd7bf5e9cc1b4c9468771f572e0d301c, type: 2}
+  - {fileID: 11400000, guid: e8a98c4b995bbb348b2fc0659781e649, type: 2}
