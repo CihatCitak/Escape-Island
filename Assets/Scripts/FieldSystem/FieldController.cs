@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ObjectPooling;
+using UnityEngine;
 
 namespace FieldSystem
 {
@@ -9,13 +10,28 @@ namespace FieldSystem
 
         private FieldModel fieldModel;
 
-        public FieldController(FieldModel fm, FieldViewer fv)
+        public FieldController(FieldModel fieldModel, FieldViewer fieldViewer)
         {
-            fieldViewer = fv;
-            fieldModel = fm.Clone();
+            this.fieldViewer = fieldViewer;
+            this.fieldModel = fieldModel.Clone();
 
-            fieldViewer.transform.position = fieldModel.PositionInLevel;
-            fieldViewer.transform.eulerAngles = new Vector3(0, fieldModel.YRotationOffset, 0);
+            this.fieldViewer.transform.position = this.fieldModel.PositionInLevel;
+            this.fieldViewer.transform.eulerAngles = new Vector3(0, this.fieldModel.YRotationOffset, 0);
+
+            foreach (var fieldColumn in this.fieldModel.FieldColumns)
+            {
+                if (fieldColumn.ColorType == ColorType.Empty)
+                    continue;
+
+                foreach (var position in fieldColumn.Positions)
+                {
+                    PawnSystem.IPawn pawn = PawnSystem.PawnPool.Instance.Dequeue();
+                    pawn
+                        .SetTransformParent(fieldViewer.GetPawnPositionParent())
+                        .SetColor(fieldColumn.ColorType)
+                        .SetLocalPosition(position);
+                }
+            }
         }
 
         // todo: Transfer ile ilgili işlemler burada yapılacak

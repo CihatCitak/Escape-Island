@@ -29,7 +29,8 @@ namespace LevelDataSystem
             foreach (var fieldData in level.FieldModels)
             {
                 // Create FieldViewer and FieldController
-                var fieldViewer = Instantiate(level.FieldPrefab, levelParent);
+                var fieldViewer = FieldPool.Instance.Dequeue();
+                fieldViewer.transform.parent = levelParent;
                 FieldController fieldController = new FieldController(fieldData.FieldModel, fieldViewer);
 
                 FieldHolder fieldHolder = new FieldHolder(fieldController, fieldViewer);

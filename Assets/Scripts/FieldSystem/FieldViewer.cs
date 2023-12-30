@@ -1,15 +1,18 @@
 ﻿using InputSystem;
 using UnityEngine;
 using DG.Tweening;
+using ObjectPooling;
 
 namespace FieldSystem
 {
-    public class FieldViewer : MonoBehaviour, IClickable
+    public class FieldViewer : MonoBehaviour, IClickable, IPoolableObject<FieldViewer>
     {
         [SerializeField] private Transform pawnPositionParent;
         private Tween moveTween;
 
         public bool IsClickable { get; set; }
+        public IObjectPool<FieldViewer> PoolParent { get; set; }
+
         public void OnCLick()
         {
             if (moveTween != null)
