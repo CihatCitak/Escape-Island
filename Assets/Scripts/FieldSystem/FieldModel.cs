@@ -1,4 +1,5 @@
 using System;
+using PawnSystem;
 using UnityEngine;
 using ColorSystem;
 using System.Collections.Generic;
@@ -35,6 +36,7 @@ namespace FieldSystem
         public List<Vector3> Positions = new List<Vector3>();
         public ColorType ColorType = ColorType.Empty;
         public bool IsOpen = true;
+        [HideInInspector] public List<IPawn> Pawns = new List<IPawn>();
 
         public FieldColumn Clone()
         {

@@ -1,9 +1,12 @@
-﻿using InputSystem;
+﻿using ColorSystem;
+using System;
+using InputSystem;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace FieldSystem
 {
-    public class FieldsManager
+    public class FieldsManager : MonoBehaviour
     {
         public List<FieldHolder> FieldsHolder { get => fieldsHolder; }
         private List<FieldHolder> fieldsHolder = new List<FieldHolder>();
@@ -27,24 +30,20 @@ namespace FieldSystem
             if (from == null || to == null)
                 return;
 
-            /*int fromPawnCount = from.GetPawnCount();
-            int toEmptyPositionCount = to.GetEmptyPositionCount();
+            int fromPawnCount = from.GetNextMovePawnCount();
+            int toEmptyPositionCount = to.GetEmptyPawnPositionCount();
 
-            Color fromPawnColor = from.GetColor();
-            Color toLastPawnColor = to.GetColor();
+            ColorType fromPawnColor = from.GetNextColumnColorType();
+            ColorType toLastPawnColor = to.GetNextColumnColorType();
 
-            bool isToAllPositionsEmpty = to.IsEmpty();
+            bool isToAllPositionsEmpty = toLastPawnColor == ColorType.Empty;
 
-
-            // from'un bir sonraki satır pawn'larının rengi ile
-            // to'un satır rengi uyuşuyor veya to'un bütün satırları boşsa
-            // ve from'un bir sornaki göndereceği pawn sayısı kadar to da yer varsa
             bool canTransfer = fromPawnColor == toLastPawnColor && fromPawnCount <= toEmptyPositionCount;
             if (isToAllPositionsEmpty || canTransfer)
             {
-                to.AddPawns(from.GetPawns());
+                to.AddPawns(from.RemovePawns());
                 return;
-            }*/
+            }
         }
 
         public sealed class FieldHolder

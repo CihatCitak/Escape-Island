@@ -7,10 +7,10 @@ namespace LevelDataSystem
 {
     public class LevelManager : MonoBehaviour
     {
+        [SerializeField] private FieldsManager fieldsManager;
         [SerializeField] private Transform levelParent;
         [SerializeField] private List<LevelData> levels;
 
-        private FieldsManager fieldsManager = new FieldsManager();
         private int levelIndex = 0;
 
         private void Awake()

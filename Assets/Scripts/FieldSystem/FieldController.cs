@@ -1,6 +1,8 @@
 ﻿using PawnSystem;
 using UnityEngine;
 using ColorSystem;
+using System;
+using System.Collections.Generic;
 
 namespace FieldSystem
 {
@@ -31,10 +33,112 @@ namespace FieldSystem
                         .SetTransformParent(fieldViewer.GetPawnPositionParent())
                         .SetColor(fieldColumn.ColorType)
                         .SetLocalPosition(position);
+
+                    fieldColumn.Pawns.Add(pawn);
                 }
             }
         }
 
-        // todo: Transfer ile ilgili işlemler burada yapılacak
+        public int GetNextMovePawnCount()
+        {
+            int count = 0;
+            ColorType colorType = ColorType.Empty;
+
+            for (int i = fieldModel.FieldColumns.Count - 1; i >= 0; i--)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+
+                if (fieldColumn.ColorType == ColorType.Empty)
+                    continue;
+
+                if (colorType == ColorType.Empty)
+                { 
+                    colorType = fieldColumn.ColorType;
+                    count += fieldColumn.Positions.Count;
+                    continue;
+                }
+
+                if(fieldColumn.ColorType == colorType)
+                    count += fieldColumn.Positions.Count;
+            }
+
+            return count;
+        }
+
+        public int GetEmptyPawnPositionCount()
+        {
+            int count = 0;
+
+            for (int i = fieldModel.FieldColumns.Count - 1; i >= 0; i--)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+
+                if (fieldColumn.ColorType == ColorType.Empty)
+                    count += fieldColumn.Positions.Count;
+                else
+                    break;
+            }
+
+            return count;
+        }
+
+        public ColorType GetNextColumnColorType()
+        {
+            for (int i = fieldModel.FieldColumns.Count - 1; i >= 0; i--)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+
+                if (fieldColumn.ColorType != ColorType.Empty)
+                    return fieldColumn.ColorType;
+            }
+
+            return ColorType.Empty;
+        }
+
+        public void AddPawns(List<List<IPawn>> pawnMatrix)
+        {
+            ColorType colorType = GetNextColumnColorType();
+            int matrixIndex = 0;
+
+            for (int i = 0; i < fieldModel.FieldColumns.Count; i++)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+                
+                if(fieldColumn.ColorType == ColorType.Empty)
+                {
+                    fieldColumn.ColorType = colorType;
+                    fieldColumn.Pawns.AddRange(pawnMatrix[matrixIndex]);
+
+                    for (int j = 0; j < pawnMatrix[matrixIndex].Count; j++)
+                    {
+                        var pawn = pawnMatrix[matrixIndex][j];
+                        pawn.SetTransformParent(fieldViewer.GetPawnPositionParent());
+                        pawn.SetLocalPosition(fieldColumn.Positions[j]);
+                    }
+
+                    matrixIndex++;
+                }
+            }
+        }
+
+        public List<List<IPawn>> RemovePawns()
+        {
+            ColorType colorType = GetNextColumnColorType();
+            List<List<IPawn>> removePawnMatrix = new List<List<IPawn>>();
+
+            for (int i = fieldModel.FieldColumns.Count - 1; i >= 0; i--)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+
+                if (fieldColumn.ColorType == colorType)
+                {
+                    fieldColumn.ColorType = ColorType.Empty;
+                    removePawnMatrix.Add(new List<IPawn>(fieldColumn.Pawns));
+                    fieldColumn.Pawns.Clear();
+                }
+            }
+
+            return removePawnMatrix;
+        }
     }
 }
