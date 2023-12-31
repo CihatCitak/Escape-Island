@@ -38,7 +38,9 @@ namespace FieldSystem
 
             bool isToAllPositionsEmpty = toLastPawnColor == ColorType.Empty;
 
-            bool canTransfer = fromPawnColor == toLastPawnColor && fromPawnCount <= toEmptyPositionCount;
+            bool canTransfer = fromPawnColor != ColorType.Empty && 
+                fromPawnColor == toLastPawnColor && fromPawnCount <= toEmptyPositionCount;
+
             if (isToAllPositionsEmpty || canTransfer)
             {
                 to.AddPawns(from.RemovePawns());

@@ -58,8 +58,10 @@ namespace FieldSystem
                     continue;
                 }
 
-                if(fieldColumn.ColorType == colorType)
+                if (fieldColumn.ColorType == colorType)
                     count += fieldColumn.Positions.Count;
+                else
+                    break;
             }
 
             return count;
@@ -97,7 +99,7 @@ namespace FieldSystem
 
         public void AddPawns(List<List<IPawn>> pawnMatrix)
         {
-            ColorType colorType = GetNextColumnColorType();
+            ColorType colorType = pawnMatrix[0][0].ColorType;
             int matrixIndex = 0;
 
             for (int i = 0; i < fieldModel.FieldColumns.Count; i++)
@@ -107,7 +109,8 @@ namespace FieldSystem
                 if(fieldColumn.ColorType == ColorType.Empty)
                 {
                     fieldColumn.ColorType = colorType;
-                    fieldColumn.Pawns.AddRange(pawnMatrix[matrixIndex]);
+                    fieldColumn.Pawns.Clear();
+                    fieldColumn.Pawns.AddRange(new List<IPawn>(pawnMatrix[matrixIndex]));
 
                     for (int j = 0; j < pawnMatrix[matrixIndex].Count; j++)
                     {
@@ -117,8 +120,12 @@ namespace FieldSystem
                     }
 
                     matrixIndex++;
+                    if(matrixIndex == pawnMatrix.Count)
+                        break;
                 }
             }
+
+            pawnMatrix.Clear();
         }
 
         public List<List<IPawn>> RemovePawns()
@@ -136,6 +143,8 @@ namespace FieldSystem
                     removePawnMatrix.Add(new List<IPawn>(fieldColumn.Pawns));
                     fieldColumn.Pawns.Clear();
                 }
+                else if(fieldColumn.ColorType != ColorType.Empty)
+                    break;
             }
 
             return removePawnMatrix;
