@@ -471,6 +471,10 @@ PrefabInstance:
       propertyPath: fieldsManager
       value: 
       objectReference: {fileID: 1392552102}
+    - target: {fileID: 8571592282207972977, guid: 5ee40904cb0d8d64fb017b7f20522b19, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ee9425a45da0874f9c6025bf72b7c57, type: 2}
     - target: {fileID: 8571592282207972978, guid: 5ee40904cb0d8d64fb017b7f20522b19, type: 3}
       propertyPath: m_RootOrder
       value: 4
