@@ -11,6 +11,11 @@ namespace FieldSystem
         public List<FieldHolder> FieldsHolder { get => fieldsHolder; }
         private List<FieldHolder> fieldsHolder = new List<FieldHolder>();
 
+        /// <summary>
+        /// Attempts to transfer pawns between the field controllers associated with the provided clickable objects.
+        /// </summary>
+        /// <param name="clickableFirst">The first clickable object involved in the transfer.</param>
+        /// <param name="clickableSecond">The second clickable object involved in the transfer.</param>
         public void TryTransfer(IClickable clickableFirst, IClickable clickableSecond)
         {
             // if some clickable is null then return;
@@ -28,6 +33,11 @@ namespace FieldSystem
             TryTransfer(firstClickFieldController, secondClickFieldController);
         }
 
+        /// <summary>
+        /// Tries to transfer pawns from one field controller to another based on certain conditions.
+        /// </summary>
+        /// <param name="from">The source field controller.</param>
+        /// <param name="to">The target field controller.</param>
         private void TryTransfer(FieldController from, FieldController to)
         {
             // if some field is null then return;

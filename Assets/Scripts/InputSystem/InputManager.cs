@@ -17,7 +17,6 @@ namespace InputSystem
 
                 if(Physics.Raycast(ray, out RaycastHit raycastHit, layerMask))
                 {
-                    // first rigidbody in object
                     var rbBody = raycastHit.collider.attachedRigidbody;
                     
                     if(rbBody.transform.TryGetComponent(out IClickable clickable))

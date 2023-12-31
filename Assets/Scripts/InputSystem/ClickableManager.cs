@@ -9,6 +9,10 @@ namespace InputSystem
 
         private IClickable firstClicked = null;
 
+        /// <summary>
+        /// Sets the last clicked clickable and handles the click logic.
+        /// </summary>
+        /// <param name="clickable">The clickable object that was clicked.</param>
         public void SetLastClicked(IClickable clickable)
         {
             if (clickable == null)
