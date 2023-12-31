@@ -8,8 +8,9 @@ namespace FieldSystem
 {
     public class FieldsManager : MonoBehaviour
     {
-        public List<FieldHolder> FieldsHolder { get => fieldsHolder; }
-        private List<FieldHolder> fieldsHolder = new List<FieldHolder>();
+        public List<FieldHolder> FieldsHolder { get => fieldHolders; }
+        private List<FieldHolder> fieldHolders = new List<FieldHolder>();
+        public Action CheckGameEnd;
 
         /// <summary>
         /// Attempts to transfer pawns between the field controllers associated with the provided clickable objects.
@@ -27,8 +28,8 @@ namespace FieldSystem
             FieldViewer secondClickViewer = clickableSecond as FieldViewer;
 
             // Find FieldViewer to FieldController
-            FieldController firstClickFieldController = fieldsHolder.Find(x => x.FieldViewer == firstClickViewer).FieldController;
-            FieldController secondClickFieldController = fieldsHolder.Find(x => x.FieldViewer == secondClickViewer).FieldController;
+            FieldController firstClickFieldController = fieldHolders.Find(x => x.FieldViewer == firstClickViewer).FieldController;
+            FieldController secondClickFieldController = fieldHolders.Find(x => x.FieldViewer == secondClickViewer).FieldController;
 
             TryTransfer(firstClickFieldController, secondClickFieldController);
         }
@@ -56,22 +57,33 @@ namespace FieldSystem
                 fromPawnColor == toLastPawnColor && fromPawnCount <= toEmptyPositionCount;
 
             if (isToAllPositionsEmpty || canTransfer)
-            {
                 to.AddPawns(from.RemovePawns());
-                return;
-            }
+
+            if (CheckAlldFieldDone())
+                Debug.Log("Level Win");
         }
 
-        public sealed class FieldHolder
+        private bool CheckAlldFieldDone()
         {
-            public FieldController FieldController;
-            public FieldViewer FieldViewer;
-
-            public FieldHolder(FieldController fieldController, FieldViewer fieldViewer)
+            foreach (var fieldHolder in fieldHolders)
             {
-                FieldController = fieldController;
-                FieldViewer = fieldViewer;
+                if(!fieldHolder.FieldController.IsFieldDone())
+                    return false;
             }
+
+            return true;
+        }
+    }
+
+    public sealed class FieldHolder
+    {
+        public FieldController FieldController;
+        public FieldViewer FieldViewer;
+
+        public FieldHolder(FieldController fieldController, FieldViewer fieldViewer)
+        {
+            FieldController = fieldController;
+            FieldViewer = fieldViewer;
         }
     }
 }

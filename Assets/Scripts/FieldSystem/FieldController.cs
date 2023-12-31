@@ -11,6 +11,9 @@ namespace FieldSystem
         public FieldViewer FieldViewer { get => fieldViewer; set => fieldViewer = value; }
         private FieldViewer fieldViewer;
 
+        public bool IsFull { get; private set; }
+        public bool IsEmpty { get => !fieldViewer.IsFirstClickable; }
+
         private FieldModel fieldModel;
 
         /// <summary>
@@ -21,7 +24,6 @@ namespace FieldSystem
         /// <param name="fieldViewer">The field viewer associated with the controller.</param>
         public FieldController(FieldModel fieldModel, FieldViewer fieldViewer)
         {
-            // Create field from level data
             this.fieldViewer = fieldViewer;
             this.fieldModel = fieldModel.Clone();
 
@@ -125,6 +127,9 @@ namespace FieldSystem
         /// <param name="pawnMatrix">The matrix of pawns to be added to the field columns.</param>
         public void AddPawns(List<List<IPawn>> pawnMatrix)
         {
+            if (pawnMatrix.Count <= 0)
+                return;
+
             ColorType colorType = pawnMatrix[0][0].ColorType;
             int matrixIndex = 0;
 
@@ -150,6 +155,8 @@ namespace FieldSystem
                         break;
                 }
             }
+
+            CheckIsFull();
 
             pawnMatrix.Clear();
         }
@@ -179,6 +186,29 @@ namespace FieldSystem
             }
 
             return removePawnMatrix;
+        }
+
+        private void CheckIsFull()
+        {
+            ColorType colorType = GetNextColumnColorType();
+
+            for (int i = 0; i < fieldModel.FieldColumns.Count; i++)
+            {
+                var fieldColumn = fieldModel.FieldColumns[i];
+
+                if (fieldColumn.ColorType != colorType)
+                {
+                    IsFull = false;
+                    return;
+                }
+            }
+
+            IsFull = true;
+        }
+
+        public bool IsFieldDone()
+        {
+            return IsEmpty || IsFull;
         }
     }
 }

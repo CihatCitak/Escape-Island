@@ -11,7 +11,6 @@ namespace FieldSystem
         private Tween moveTween;
 
         public bool IsFirstClickable { get => pawnPositionParent.childCount > 0; }
-        public bool IsClosed { get; set; }
         public IObjectPool<FieldViewer> PoolParent { get; set; }
 
         public void OnCLick()
