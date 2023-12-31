@@ -405,8 +405,9 @@ GameObject:
   - component: {fileID: 4104385007087645878}
   - component: {fileID: 4104385007087645876}
   - component: {fileID: 4104385007087645877}
+  - component: {fileID: 2286050312699828004}
   m_Layer: 5
-  m_Name: LevelEndUI
+  m_Name: Pre_LevelEndUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -472,3 +473,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2286050312699828004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104385007087645879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b086e706187e2544b968cadef031ca7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevelButton: {fileID: 6137783418704385184}

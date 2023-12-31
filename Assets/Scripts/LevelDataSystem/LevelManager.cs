@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using FieldSystem;
 using System.Collections.Generic;
+using UISystem;
 
 namespace LevelDataSystem
 {
@@ -12,10 +13,10 @@ namespace LevelDataSystem
         [SerializeField] private Transform levelParent;
         [SerializeField] private List<LevelData> levels;
 
+        public Action AllPoolObjectReturnsPool;
+
         public static LevelManager Instance { get => instance; set => instance = value; }
         private static LevelManager instance;
-
-        public Action AllPoolObjectReturnsPool;
 
         private int levelIndex = 0;
 
@@ -40,6 +41,8 @@ namespace LevelDataSystem
                 LevelData level = levels[levelIndex];
                 CreateLevel(level);
             }
+
+            MainUI.Instance.SetLevelCount(levelIndex + 1);
         }
 
         /// <summary>

@@ -3,6 +3,7 @@ using InputSystem;
 using UnityEngine;
 using LevelDataSystem;
 using System.Collections.Generic;
+using UISystem;
 
 namespace FieldSystem
 {
@@ -37,9 +38,7 @@ namespace FieldSystem
 
             if (isTransferSucces && CheckAlldFieldDone())
             {
-                LevelManager.Instance.LevelWin();
-
-                Debug.Log("Level Win");
+                MainUI.Instance.LevelWin();
             }
         }
 
