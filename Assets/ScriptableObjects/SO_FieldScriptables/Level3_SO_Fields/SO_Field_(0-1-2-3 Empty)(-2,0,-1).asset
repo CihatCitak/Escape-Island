@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: badcc91742573a942beca89cb067edb3, type: 3}
-  m_Name: SO_Field_(0-1-2-3 Empty)(-2,0,1)
+  m_Name: SO_Field_(0-1-2-3 Empty)(-2,0,-1)
   m_EditorClassIdentifier: 
   FieldModel:
     PositionInLevel: {x: -2, y: 0, z: -1.25}

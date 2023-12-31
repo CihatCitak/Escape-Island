@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SO_Field_(0-1-2-3 Empty)(2,0,0)
   m_EditorClassIdentifier: 
   FieldModel:
-    PositionInLevel: {x: -2, y: 0, z: 0}
+    PositionInLevel: {x: 2, y: 0, z: 0}
     FieldColumns:
     - Positions:
       - {x: -0.3, y: 0, z: -0.3}

@@ -20,6 +20,7 @@ namespace UISystem
             }
 
             instance = this;
+            Application.targetFrameRate = 60;
         }
 
         public void SetLevelCount(int levelCount)
