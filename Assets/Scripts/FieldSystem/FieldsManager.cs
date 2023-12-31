@@ -13,6 +13,10 @@ namespace FieldSystem
 
         public void TryTransfer(IClickable clickableFirst, IClickable clickableSecond)
         {
+            // if some clickable is null then return;
+            if (clickableFirst == null || clickableSecond == null)
+                return;
+
             // Convert IClickables to FieldViewer
             FieldViewer firstClickViewer = clickableFirst as FieldViewer;
             FieldViewer secondClickViewer = clickableSecond as FieldViewer;

@@ -15,7 +15,7 @@ namespace InputSystem
                 return;
 
             // if there is no clickable that is not clicked before
-            if (firstClicked == null)
+            if (firstClicked == null && clickable.IsFirstClickable)
             {
                 firstClicked = clickable;
                 firstClicked.OnCLick();
@@ -32,7 +32,7 @@ namespace InputSystem
 
             fieldManager?.TryTransfer(firstClicked, clickable);
 
-            firstClicked.ResetClick();
+            firstClicked?.ResetClick();
             firstClicked = null;
         }
     }
