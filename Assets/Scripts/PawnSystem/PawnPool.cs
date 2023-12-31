@@ -1,7 +1,9 @@
-﻿using ObjectPooling;
+﻿using UnityEngine;
+using ObjectPooling;
 
 namespace PawnSystem
 {
+    [DefaultExecutionOrder(-2)]
     public class PawnPool : ObjectPool<Pawn>
     {
         public static PawnPool Instance { get => instance; set => instance = value; }

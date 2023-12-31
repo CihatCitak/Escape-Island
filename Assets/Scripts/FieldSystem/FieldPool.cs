@@ -1,7 +1,9 @@
 using ObjectPooling;
+using UnityEngine;
 
 namespace FieldSystem
 {
+    [DefaultExecutionOrder(-2)]
     public class FieldPool : ObjectPool<FieldViewer>
     {
         public static FieldPool Instance { get => instance; set => instance = value; }
