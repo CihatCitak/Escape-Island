@@ -23,11 +23,15 @@ namespace FieldSystem
 
         protected override void DequeueSettings(FieldViewer pooledObject)
         {
+            LevelDataSystem.LevelManager.Instance.AllPoolObjectReturnsPool += () => Enqueue(pooledObject);
+
             pooledObject.gameObject.SetActive(true);
         }
 
         protected override void EnqueueSettings(FieldViewer pooledObject)
         {
+            LevelDataSystem.LevelManager.Instance.AllPoolObjectReturnsPool -= () => Enqueue(pooledObject);
+
             pooledObject.gameObject.SetActive(false);
             pooledObject.transform.parent = transform;
         }

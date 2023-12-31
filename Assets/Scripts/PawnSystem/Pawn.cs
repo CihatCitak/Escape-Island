@@ -16,6 +16,12 @@ namespace PawnSystem
         private const float MoveDuration = 1f;
         private Tween moveTwenn;
 
+        private void OnDisable()
+        {
+            ColorType = ColorType.Empty;
+            moveTwenn?.Kill();
+        }
+
         public IPawn SetColor(ColorType colorType)
         {
             ColorType = colorType;
@@ -31,9 +37,7 @@ namespace PawnSystem
                 return this;
             }
 
-            if (moveTwenn != null)
-                moveTwenn.Kill();
-
+            moveTwenn?.Kill();
             moveTwenn = transform.DOLocalMove(localPosition, MoveDuration)
                 .SetDelay((MoveDelayOffset * movingPawnIndex) + MoveStaticDelay);
 

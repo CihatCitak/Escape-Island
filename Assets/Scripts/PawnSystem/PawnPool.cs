@@ -23,11 +23,15 @@ namespace PawnSystem
 
         protected override void DequeueSettings(Pawn pooledObject)
         {
+            LevelDataSystem.LevelManager.Instance.AllPoolObjectReturnsPool += () => Enqueue(pooledObject);
+
             pooledObject.gameObject.SetActive(true);
         }
 
         protected override void EnqueueSettings(Pawn pooledObject)
         {
+            LevelDataSystem.LevelManager.Instance.AllPoolObjectReturnsPool -= () => Enqueue(pooledObject);
+
             pooledObject.gameObject.SetActive(false);
             pooledObject.transform.parent = transform;
         }

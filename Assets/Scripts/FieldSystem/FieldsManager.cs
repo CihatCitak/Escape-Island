@@ -1,7 +1,7 @@
 ﻿using ColorSystem;
-using System;
 using InputSystem;
 using UnityEngine;
+using LevelDataSystem;
 using System.Collections.Generic;
 
 namespace FieldSystem
@@ -10,7 +10,9 @@ namespace FieldSystem
     {
         public List<FieldHolder> FieldsHolder { get => fieldHolders; }
         private List<FieldHolder> fieldHolders = new List<FieldHolder>();
-        public Action CheckGameEnd;
+
+        private void OnEnable() => LevelManager.Instance.AllPoolObjectReturnsPool += () => fieldHolders.Clear();
+        private void OnDisable() => LevelManager.Instance.AllPoolObjectReturnsPool -= () => fieldHolders.Clear();
 
         /// <summary>
         /// Attempts to transfer pawns between the field controllers associated with the provided clickable objects.
@@ -35,6 +37,8 @@ namespace FieldSystem
 
             if (isTransferSucces && CheckAlldFieldDone())
             {
+                LevelManager.Instance.LevelWin();
+
                 Debug.Log("Level Win");
             }
         }

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledObjectPrefab: {fileID: 146324200971295506, guid: 718e30ac5371dc8479136afc13cba47c, type: 3}
-  startSize: 20
-  maxSize: 40
+  startSize: 50
+  maxSize: 100
 --- !u!114 &1726642125129928819
 MonoBehaviour:
   m_ObjectHideFlags: 0

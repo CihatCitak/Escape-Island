@@ -17,10 +17,10 @@ namespace ObjectPooling
 
         protected virtual void Awake()
         {
-            for (int i = 0; i < startSize; i++)
+            /*for (int i = 0; i < startSize; i++)
             {
-                CreatePoolObjectThenAddQueue();
-            }
+                //CreatePoolObjectThenAddQueue();
+            }*/
         }
 
         protected abstract void DequeueSettings(T pooledObject);
