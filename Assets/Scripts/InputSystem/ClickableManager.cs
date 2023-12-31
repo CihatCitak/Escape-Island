@@ -34,7 +34,7 @@ namespace InputSystem
                 return;
             }
 
-            fieldManager?.TryTransfer(firstClicked, clickable);
+            fieldManager?.TryTransferSetup(firstClicked, clickable);
 
             firstClicked?.ResetClick();
             firstClicked = null;
