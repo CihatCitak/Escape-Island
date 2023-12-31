@@ -44,7 +44,7 @@ namespace FieldSystem
                     pawn
                         .SetTransformParent(fieldViewer.GetPawnPositionParent())
                         .SetColor(fieldColumn.ColorType)
-                        .SetLocalPosition(position);
+                        .SetLocalPosition(position, isFirstSet: true);
 
                     fieldColumn.Pawns.Add(pawn);
                 }
@@ -132,6 +132,7 @@ namespace FieldSystem
 
             ColorType colorType = pawnMatrix[0][0].ColorType;
             int matrixIndex = 0;
+            int pawnCount = 0;
 
             for (int i = 0; i < fieldModel.FieldColumns.Count; i++)
             {
@@ -145,9 +146,10 @@ namespace FieldSystem
 
                     for (int j = 0; j < pawnMatrix[matrixIndex].Count; j++)
                     {
+                        pawnCount++;
                         var pawn = pawnMatrix[matrixIndex][j];
                         pawn.SetTransformParent(fieldViewer.GetPawnPositionParent());
-                        pawn.SetLocalPosition(fieldColumn.Positions[j]);
+                        pawn.SetLocalPosition(fieldColumn.Positions[j], movingPawnIndex: pawnCount);
                     }
 
                     matrixIndex++;

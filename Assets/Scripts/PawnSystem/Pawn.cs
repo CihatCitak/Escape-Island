@@ -1,5 +1,6 @@
 using UnityEngine;
 using ColorSystem;
+using DG.Tweening;
 using ObjectPooling;
 
 namespace PawnSystem
@@ -10,6 +11,11 @@ namespace PawnSystem
         public ColorType ColorType { get; set; }
         public IObjectPool<Pawn> PoolParent { get; set; }
 
+        private const float MoveDelayOffset = 0.1f;
+        private const float MoveStaticDelay = 0.25f;
+        private const float MoveDuration = 1f;
+        private Tween moveTwenn;
+
         public IPawn SetColor(ColorType colorType)
         {
             ColorType = colorType;
@@ -17,9 +23,20 @@ namespace PawnSystem
             return this;
         }
 
-        public IPawn SetLocalPosition(Vector3 localPosition)
+        public IPawn SetLocalPosition(Vector3 localPosition, int movingPawnIndex = 0, bool isFirstSet = false)
         {
-            transform.localPosition = localPosition;
+            if(isFirstSet)
+            {
+                transform.localPosition = localPosition;
+                return this;
+            }
+
+            if (moveTwenn != null)
+                moveTwenn.Kill();
+
+            moveTwenn = transform.DOLocalMove(localPosition, MoveDuration)
+                .SetDelay((MoveDelayOffset * movingPawnIndex) + MoveStaticDelay);
+
             return this;
         }
 
