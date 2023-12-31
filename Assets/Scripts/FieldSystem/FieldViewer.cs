@@ -9,6 +9,8 @@ namespace FieldSystem
     {
         [SerializeField] private Transform pawnPositionParent;
         private Tween moveTween;
+        private const float MoveDuration = 0.5f;
+        private const float MoveYOffset = 0.5f;
 
         public bool IsFirstClickable { get => pawnPositionParent.childCount > 0; }
         public IObjectPool<FieldViewer> PoolParent { get; set; }
@@ -18,7 +20,7 @@ namespace FieldSystem
             if (moveTween != null)
                 moveTween.Kill();
 
-            moveTween = transform.DOMoveY(1f, 1f).SetEase(Ease.InOutSine).Play();
+            moveTween = transform.DOMoveY(MoveYOffset, MoveDuration).SetEase(Ease.InOutSine).Play();
         }
 
         public void ResetClick()
@@ -26,7 +28,7 @@ namespace FieldSystem
             if (moveTween != null)
                 moveTween.Kill();
 
-            moveTween = transform.DOMoveY(0f, 0.5f).SetEase(Ease.InOutSine).Play();
+            moveTween = transform.DOMoveY(0f, MoveDuration / 2).SetEase(Ease.InOutSine).Play();
         }
 
         public Transform GetPawnPositionParent()

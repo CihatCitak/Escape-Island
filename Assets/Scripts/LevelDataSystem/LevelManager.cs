@@ -1,7 +1,6 @@
 using UnityEngine;
 using FieldSystem;
 using System.Collections.Generic;
-using static FieldSystem.FieldsManager;
 
 namespace LevelDataSystem
 {

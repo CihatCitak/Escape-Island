@@ -17,7 +17,7 @@ namespace FieldSystem
         /// </summary>
         /// <param name="clickableFirst">The first clickable object involved in the transfer.</param>
         /// <param name="clickableSecond">The second clickable object involved in the transfer.</param>
-        public void TryTransfer(IClickable clickableFirst, IClickable clickableSecond)
+        public void TryTransferSetup(IClickable clickableFirst, IClickable clickableSecond)
         {
             // if some clickable is null then return;
             if (clickableFirst == null || clickableSecond == null)
@@ -31,7 +31,12 @@ namespace FieldSystem
             FieldController firstClickFieldController = fieldHolders.Find(x => x.FieldViewer == firstClickViewer).FieldController;
             FieldController secondClickFieldController = fieldHolders.Find(x => x.FieldViewer == secondClickViewer).FieldController;
 
-            TryTransfer(firstClickFieldController, secondClickFieldController);
+            bool isTransferSucces = TryTransfer(firstClickFieldController, secondClickFieldController);
+
+            if (isTransferSucces && CheckAlldFieldDone())
+            {
+                Debug.Log("Level Win");
+            }
         }
 
         /// <summary>
@@ -39,28 +44,36 @@ namespace FieldSystem
         /// </summary>
         /// <param name="from">The source field controller.</param>
         /// <param name="to">The target field controller.</param>
-        private void TryTransfer(FieldController from, FieldController to)
+        private bool TryTransfer(FieldController from, FieldController to)
         {
             // if some field is null then return;
             if (from == null || to == null)
-                return;
+                return false;
 
+            // If ToField is empty don't waste time do transfer
+            ColorType toLastPawnColor = to.GetNextColumnColorType();
+            bool isToAllPositionsEmpty = toLastPawnColor == ColorType.Empty;
+            if(isToAllPositionsEmpty)
+            {
+                to.AddPawns(from.RemovePawns());
+                return true;
+            }
+
+            // If field has different color types transfer is impossible
+            ColorType fromPawnColor = from.GetNextColumnColorType();
+            if (fromPawnColor != toLastPawnColor)
+                return false;
+
+            // If ToField empty position count is enough for FromFieldPawnCount
             int fromPawnCount = from.GetNextMovePawnCount();
             int toEmptyPositionCount = to.GetEmptyPawnPositionCount();
-
-            ColorType fromPawnColor = from.GetNextColumnColorType();
-            ColorType toLastPawnColor = to.GetNextColumnColorType();
-
-            bool isToAllPositionsEmpty = toLastPawnColor == ColorType.Empty;
-
-            bool canTransfer = fromPawnColor != ColorType.Empty && 
-                fromPawnColor == toLastPawnColor && fromPawnCount <= toEmptyPositionCount;
-
-            if (isToAllPositionsEmpty || canTransfer)
+            if (fromPawnCount <= toEmptyPositionCount)
+            {
                 to.AddPawns(from.RemovePawns());
+                return true;
+            }
 
-            if (CheckAlldFieldDone())
-                Debug.Log("Level Win");
+            return false;
         }
 
         private bool CheckAlldFieldDone()
