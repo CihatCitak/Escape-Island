@@ -7,7 +7,7 @@ namespace InputSystem
     {
         [SerializeField] private FieldsManager fieldManager;
 
-        private IClickable firstCicked = null;
+        private IClickable firstClicked = null;
 
         public void SetLastClicked(IClickable clickable)
         {
@@ -15,25 +15,25 @@ namespace InputSystem
                 return;
 
             // if there is no clickable that is not clicked before
-            if (firstCicked == null)
+            if (firstClicked == null)
             {
-                firstCicked = clickable;
-                firstCicked.OnCLick();
+                firstClicked = clickable;
+                firstClicked.OnCLick();
                 return;
             }
 
             // if same clickable clicked twice
-            if (firstCicked == clickable)
+            if (firstClicked == clickable)
             {
-                firstCicked.ResetClick();
-                firstCicked = null;
+                firstClicked.ResetClick();
+                firstClicked = null;
                 return;
             }
 
-            fieldManager?.TryTransfer(firstCicked, clickable);
+            fieldManager?.TryTransfer(firstClicked, clickable);
 
-            firstCicked.ResetClick();
-            firstCicked = null;
+            firstClicked.ResetClick();
+            firstClicked = null;
         }
     }
 }
