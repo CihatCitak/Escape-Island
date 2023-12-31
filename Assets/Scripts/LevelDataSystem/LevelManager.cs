@@ -41,6 +41,13 @@ namespace LevelDataSystem
                 LevelData level = levels[levelIndex];
                 CreateLevel(level);
             }
+            else
+            {
+                levelIndex = 0;
+                SaveLevelIndex();
+                LevelData level = levels[levelIndex];
+                CreateLevel(level);
+            }
 
             MainUI.Instance.SetLevelCount(levelIndex + 1);
         }

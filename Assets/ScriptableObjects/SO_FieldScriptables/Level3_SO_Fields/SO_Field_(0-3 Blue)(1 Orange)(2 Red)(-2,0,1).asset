@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badcc91742573a942beca89cb067edb3, type: 3}
+  m_Name: SO_Field_(0-3 Blue)(1 Orange)(2 Red)(-2,0,1)
+  m_EditorClassIdentifier: 
+  FieldModel:
+    PositionInLevel: {x: -2, y: 0, z: 1.25}
+    FieldColumns:
+    - Positions:
+      - {x: -0.3, y: 0, z: -0.3}
+      - {x: -0.1, y: 0, z: -0.3}
+      - {x: 0.1, y: 0, z: -0.3}
+      - {x: 0.3, y: 0, z: -0.3}
+      ColorType: 1
+      IsOpen: 0
+    - Positions:
+      - {x: -0.3, y: 0, z: -0.1}
+      - {x: -0.1, y: 0, z: -0.1}
+      - {x: 0.1, y: 0, z: -0.1}
+      - {x: 0.3, y: 0, z: -0.1}
+      ColorType: 3
+      IsOpen: 0
+    - Positions:
+      - {x: -0.3, y: 0, z: 0.1}
+      - {x: -0.1, y: 0, z: 0.1}
+      - {x: 0.1, y: 0, z: 0.1}
+      - {x: 0.3, y: 0, z: 0.1}
+      ColorType: 5
+      IsOpen: 0
+    - Positions:
+      - {x: -0.3, y: 0, z: 0.3}
+      - {x: -0.1, y: 0, z: 0.3}
+      - {x: 0.1, y: 0, z: 0.3}
+      - {x: 0.3, y: 0, z: 0.3}
+      ColorType: 1
+      IsOpen: 0
